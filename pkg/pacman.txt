@@ -3,6 +3,7 @@ base
 base-devel
 blueman
 brightnessctl
+chezmoi
 chrono-date
 cliphist
 cmake
