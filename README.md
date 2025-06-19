@@ -14,7 +14,10 @@ However, there are a few ~mistakes~ things that will make the setup process smoo
 **TL;DR:** Include the following packages when using `pacstrap`:
 
 ```bash
-pacstrap -K /mnt grub efibootmgr networkmanager vim nano helix sudo git pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber zsh zsh-completions zsh-autosuggestions openssh
+pacstrap -K /mnt grub efibootmgr networkmanager vim nano \
+  helix sudo git pipewire pipewire-alsa pipewire-pulse \
+  pipewire-jack wireplumber zsh zsh-completions \
+  zsh-autosuggestions openssh
 ```
 
 When using [pacstrap to install essential packages](https://wiki.archlinux.org/title/Installation_guide#Install_essential_packages), make sure you include [`networkmanager`](https://wiki.archlinux.org/title/NetworkManager).
