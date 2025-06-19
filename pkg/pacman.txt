@@ -57,6 +57,7 @@ python-pip
 qt6ct
 rsync
 ruff
+rustup
 sddm
 slurp
 sof-firmware
