@@ -21,15 +21,13 @@ if ! command -v chezmoi &>/dev/null; then
     log "chezmoi is not installed!"
     exit 1
 else
-    log "chezmoi is already installed."
+    log "chezmoi is installed."
 fi
 
-# 2. Create chezmoi source dir if needed
-mkdir -p "$DEST_DIR"
-
 # 3. Initialize chezmoi Git repo if not present
-if [[ ! -d "$DEST_DIR/.git" ]]; then
-    warn "chezmoi is not initialized with Git."
+if [[ -d "$DEST_DIR" ]]; then
+    error "chezmoi directory already exists!"
+    error "Remove ~/.local/share/chezmoi if you want to overwrite"
     exit 1
 fi
 
