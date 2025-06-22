@@ -1,20 +1,12 @@
-1password
 aurutils
-basedpyright
 brave-bin
 checkupdates-with-aur
-codebook-bin
-codebook-bin-debug
 grimblast-git
 hyprshade
-markdown-oxide-git
-markdown-oxide-git-debug
-marksman-git
 pacseek
 pacseek-debug
 python-imageio-ffmpeg
 python-screeninfo
-spotify
 walker-bin
 walker-bin-debug
 waypaper
@@ -24,6 +16,3 @@ xwaylandvideobridge-git
 xwaylandvideobridge-git-debug
 yay
 yay-debug
-zoom
-zotero-bin
-zotero-bin-debug

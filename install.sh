@@ -1,6 +1,10 @@
 #!/bin/bash
 set -euo pipefail
 
+# Update repo
+git pull
+git submodule update --init --recursive
+
 # Resolve script directory
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SCRIPTS_PATH="$SCRIPT_DIR/scripts"
