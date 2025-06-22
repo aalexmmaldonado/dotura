@@ -4,7 +4,7 @@ set -euo pipefail
 
 # Resolve script path and chezmoi source
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
-SOURCE_DIR="$SCRIPT_DIR/../chezmoi"
+SOURCE_DIR="$SCRIPT_DIR/../dotfiles"
 DEST_DIR="$HOME/.local/share/chezmoi"
 
 GREEN="\e[32m"
