@@ -3,6 +3,7 @@ brave-bin
 checkupdates-with-aur
 grimblast-git
 hyprshade
+oh-my-zsh-git
 pacseek
 pacseek-debug
 python-imageio-ffmpeg
