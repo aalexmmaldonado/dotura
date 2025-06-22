@@ -30,8 +30,6 @@ imagemagick
 imv
 jq
 kwallet-pam
-linux
-linux-firmware
 man-db
 meson
 nano

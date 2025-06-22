@@ -11,6 +11,8 @@ gimp
 hugo
 inkscape
 intel-ucode
+linux
+linux-firmware
 markdown-oxide-git
 markdown-oxide-git-debug
 marksman-git
