@@ -2,7 +2,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
-PKG_DIR="$SCRIPT_DIR/../pkg"
+PKG_DIR="$SCRIPT_DIR/../pkg/$DOTURA_OS_NAME"
 
 PACMAN_LIST="$PKG_DIR/pacman.txt"
 AUR_LIST="$PKG_DIR/aur.txt"

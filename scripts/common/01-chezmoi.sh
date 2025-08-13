@@ -16,7 +16,6 @@ log()    { echo -e "${GREEN}[+]${RESET} $1"; }
 warn()   { echo -e "${YELLOW}[!]${RESET} $1"; }
 error()  { echo -e "${RED}[-]${RESET} $1"; }
 
-# 1. Install chezmoi if not present
 if ! command -v chezmoi &>/dev/null; then
     log "chezmoi is not installed!"
     exit 1
@@ -24,17 +23,15 @@ else
     log "chezmoi is installed."
 fi
 
-# 3. Initialize chezmoi Git repo if not present
 if [[ -d "$DEST_DIR" ]]; then
     error "chezmoi directory already exists!"
     error "Remove ~/.local/share/chezmoi if you want to overwrite"
-    exit 1
+    exit 0
 fi
 
 log "Cloning dotfiles"
-git clone git@github.com:aalexmmaldonado/dotfiles.git ~/.local/share/chezmoi
+git clone https://github.com/aalexmmaldonado/dotfiles.git ~/.local/share/chezmoi
 
-# 5. Apply chezmoi config
 log "Applying chezmoi configuration..."
 chezmoi apply
 

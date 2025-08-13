@@ -16,7 +16,7 @@ error() { echo -e "${RED}[-]${RESET} $1"; }
 
 generate_key() {
     local service="$1"
-    local filename="$SSH_DIR/id_ed25519_$service"
+    local filename="$SSH_DIR/id_$service"
     local email="${USER}@$(hostname)"
 
     if [[ -f "$filename" ]]; then
@@ -49,7 +49,7 @@ for service in github gitlab tor; do
 
     read -rp "Add key for $service to ssh-agent? [y/N] " confirm
     if [[ "$confirm" =~ ^[Yy]$ ]]; then
-        add_to_agent "$SSH_DIR/id_ed25519_${service}"
+        add_to_agent "$SSH_DIR/id_${service}"
     else
         warn "Skipped adding $service key to ssh-agent."
     fi

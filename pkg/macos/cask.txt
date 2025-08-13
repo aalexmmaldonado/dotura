@@ -1,0 +1,4 @@
+ghostty
+obsidian
+spotify
+visual-studio-code
