@@ -49,6 +49,8 @@ pipewire-alsa
 pipewire-jack
 pipewire-pulse
 pixi
+plasma-desktop
+plasma-systemmonitor
 power-profiles-daemon
 python-pip
 qt6ct

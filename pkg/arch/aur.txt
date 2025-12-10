@@ -6,6 +6,8 @@ hyprshade
 oh-my-zsh-git
 pacseek
 pacseek-debug
+pwvucontrol
+python-apt
 python-imageio-ffmpeg
 python-screeninfo
 walker-bin
