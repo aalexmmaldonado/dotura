@@ -1,0 +1,48 @@
+{
+  "packages": [
+    "networkmanager",
+    "vim",
+    "nano",
+    "helix",
+    "sudo",
+    "git",
+    "pipewire",
+    "pipewire-alsa",
+    "pipewire-pulse",
+    "pipewire-jack",
+    "wireplumber",
+    "zsh",
+    "zsh-completions",
+    "zsh-autosuggestions",
+    "openssh",
+  ],
+  "additional-repositories": [],
+  "archinstall-language": "English",
+  "audio_config": "pipewire",
+  "bootloader_config": {
+    "bootloader": "Systemd-boot",
+    "uki": false,
+    "removable": false
+  },
+  "bootloader": "Systemd-boot",
+  "debug": false,
+  "hostname": "archie",
+  "kernels": [
+    "linux"
+  ],
+  "locale_config": {
+    "kb_layout": "us",
+    "sys_enc": "UTF-8",
+    "sys_lang": "en_US"
+  },
+  "no_pkg_lookups": false,
+  "ntp": true,
+  "offline": false,
+  "profile_config": null,
+  "save_config": null,
+  "script": "guided",
+  "silent": false,
+  "swap": true,
+  "timezone": "UTC",
+  "version": "2.6.0"
+}
