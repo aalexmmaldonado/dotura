@@ -238,6 +238,39 @@ if [[ -n "$CONFIG_PATH" ]]; then
 fi
 
 
+if [[ "$ISO_PATH" =~ archlinux ]]; then
+    echo ""
+    read -r -p "Disable Kernel Mode Setting (could fix NVIDIA black screen)? [y/N]: " KMS_RESP
+    # Default to n if empty
+    KMS_RESP=${KMS_RESP:-n}
+
+    if [[ "$KMS_RESP" =~ ^[yY] ]]; then
+        log "Adding 'nomodeset nouveau.modeset=0' to boot entries..."
+        
+        # Check for entries in the standard loader location
+        # We use a wildcard *.conf because the filename might vary (01-archiso... vs archiso-x86...)
+        shopt -s nullglob
+        CONF_FILES=("$MNT_USB"/loader/entries/*.conf)
+        shopt -u nullglob
+
+        if [ ${#CONF_FILES[@]} -eq 0 ]; then
+            warn "No boot entry files found in loader/entries/. Skipping KMS modification."
+        else
+            for entry in "${CONF_FILES[@]}"; do
+                log "Patching $entry"
+                if $IS_MAC; then
+                    # macOS sed requires an empty string for the backup extension
+                    sed -i '' '/^options/ s/$/ nomodeset nouveau.modeset=0/' "$entry"
+                else
+                    # Linux sed (GNU) does not
+                    sed -i '/^options/ s/$/ nomodeset nouveau.modeset=0/' "$entry"
+                fi
+            done
+        fi
+    fi
+fi
+
+
 log "Syncing buffers..."
 sync
 
