@@ -1,0 +1,78 @@
+# Ubuntu autoinstall configuration
+# More information can be found here:
+# https://canonical-subiquity.readthedocs-hosted.com/en/latest/reference/autoinstall-reference.html
+
+autoinstall:
+  version: 1
+
+  interactive-sections:
+    - network
+    - identity
+
+  locale: "en_US.UTF-8"
+
+  keyboard:
+    layout: us
+    variant: ""
+    toggle: null
+
+  source:
+    search_drivers: true
+    id: ubuntu-server
+
+  proxy: null
+
+  # For more information:
+  # https://canonical-subiquity.readthedocs-hosted.com/en/latest/reference/autoinstall-reference.html#storage
+  # https://curtin.readthedocs.io/en/latest/topics/storage.html
+  # storage:
+  #   config:
+  #     # DISKS
+  #     - type: disk
+  #       id: disk0
+  #       match:
+  #         size: smallest
+  #       ptable: gpt
+  #       wipe: superblock-recursive
+  #       preserve: false
+  #       grub_device: false
+
+  ssh:
+    install-server: true
+    authorized-keys: []
+    allow-pw: false
+
+  drivers:
+    install: true
+
+  oem:
+    install: false
+
+  packages:
+    - build-essential
+    - git
+    - nfs-common
+    - nfs-kernel-server
+    - curl
+    - wget
+    - cmake
+    - automake
+    - autoconf
+    - software-properties-common
+    - python3
+    - python3-pip
+    - python3-venv
+    - htop
+    - tmux
+    - tree
+    - net-tools
+    - iproute2
+    - vim
+    - nano
+    - rsync
+
+  timezone: "US/Eastern"
+
+  updates: all
+
+  shutdown: reboot
