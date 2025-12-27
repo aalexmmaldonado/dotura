@@ -11,6 +11,8 @@ I have the unfortunate combination of having a goldfish memory with niche tastes
 It is unlikely that I can write a better installation guide than [the Arch Wiki](https://wiki.archlinux.org/title/Installation_guide).
 However, we have written some (hopefully helpful) advice below to streamline an arch installation.
 
+#### Making a live USB
+
 We made an `install.sh` script that guides you through creating a bootable USB drive from a Linux ISO.
 Once you have downloaded the ISO file, you can create the live disk by running the following command.
 
@@ -67,9 +69,9 @@ Unmount of all volumes on disk4 was successful
 [+] Success!
 ```
 
-#### Loading Custom Configuration
+#### Loading custom configurations
 
-There are a few extra steps to do if you chose to use a configuration file for Arch.
+There are a few extra steps if you choose to use a configuration file for Arch.
 
 Once you have booted into the live Arch environment, the USB drive is not automatically mounted for file access.
 You must manually mount the partition to retrieve your `archinstall` configuration file.
@@ -103,6 +105,8 @@ Pass the local path to `archinstall` to begin the automated setup.
 ```bash
 archinstall --config ~/arch-config.json
 ```
+
+Note that Disk configuration and Authentication are not included in the configuration file; make sure to do these manually.
 
 ### MacOS
 
