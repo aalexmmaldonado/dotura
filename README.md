@@ -67,6 +67,43 @@ Unmount of all volumes on disk4 was successful
 [+] Success!
 ```
 
+#### Loading Custom Configuration
+
+There are a few extra steps to do if you chose to use a configuration file for Arch.
+
+Once you have booted into the live Arch environment, the USB drive is not automatically mounted for file access.
+You must manually mount the partition to retrieve your `archinstall` configuration file.
+
+First, ensure you have an active internet connection (e.g., `ping archlinux.org`).
+Then, identify the device node of your USB drive.
+Look for the partition labeled `ARCH_YYYYMM` (or `INSTALLER`) with a filesystem size matching your thumb drive.
+
+```bash
+lsblk -f
+```
+
+_Note the device path, for example: `/dev/sdb1`. We will be using `/dev/sbd1/` as a placeholder. Make sure to change this to your path!_
+
+Create a temporary directory and mount the USB partition containing your config file.
+
+```bash
+mkdir -p /tmp/usb
+mount /dev/sdb1 /tmp/usb
+```
+
+Copy the configuration file to the live user's home directory to keep things clean, then unmount the drive.
+
+```bash
+cp /tmp/usb/arch-config.json ~/arch-config.json
+umount /tmp/usb
+```
+
+Pass the local path to `archinstall` to begin the automated setup.
+
+```bash
+archinstall --config ~/arch-config.json
+```
+
 ### MacOS
 
 Let's be real, do we really need instructions for this?
