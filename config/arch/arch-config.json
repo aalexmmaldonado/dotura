@@ -36,7 +36,7 @@
   ],
   "additional-repositories": [],
   "archinstall-language": "English",
-  "audio_config": "pipewire",
+  "audio_config": null,
   "bootloader_config": {
     "bootloader": "Systemd-boot",
     "uki": false,
