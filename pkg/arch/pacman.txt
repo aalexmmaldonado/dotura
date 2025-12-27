@@ -12,7 +12,6 @@ git
 github-cli
 git-lfs
 glow
-grub
 helix
 htop
 imagemagick
