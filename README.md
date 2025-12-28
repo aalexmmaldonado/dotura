@@ -9,7 +9,7 @@ I have the unfortunate combination of having a goldfish memory with niche tastes
 ### Arch
 
 It is unlikely that I can write a better installation guide than [the Arch Wiki](https://wiki.archlinux.org/title/Installation_guide).
-However, we have written some (hopefully helpful) advice below to streamline an arch installation.
+However, we have written some advice below to streamline an Arch installation.
 
 #### Making a live USB
 
@@ -22,7 +22,7 @@ sudo ./install.sh
 
 This will prompt you to select your USB drive, the ISO file, and an optional configuration file.
 We provide some sample config files for Arch and Ubuntu in the `config` directory of this repository.
-(Note that the config files are tailored to my preferences; feel free to change it.)
+(Note that the config files are tailored to my preferences; feel free to change them.)
 
 #### Loading custom configurations
 
@@ -39,7 +39,7 @@ Look for the partition labeled `ARCH_YYYYMM` (or `INSTALLER`) with a filesystem 
 lsblk -f
 ```
 
-_Note the device path, for example: `/dev/sdb1`. We will be using `/dev/sbd1/` as a placeholder. Make sure to change this to your path!_
+_Note the device path, for example: `/dev/sdb1`. We will be using `/dev/sdb1/` as a placeholder. Make sure to change this to your path!_
 
 Create a temporary directory and mount the USB partition containing your config file.
 
@@ -66,7 +66,7 @@ Note that Disk configuration and Authentication are not included in the configur
 #### NVIDIA GPUs
 
 Using Arch with NVIDIA GPUs will be a little more complicated.
-You will likely need to disable [Kernel Mode Setting (KMS)](https://wiki.archlinux.org/title/Kernel_mode_setting) when creating the Live USB.
+You will likely need to turn off [Kernel Mode Setting (KMS)](https://wiki.archlinux.org/title/Kernel_mode_setting) when creating the Live USB.
 After installation, you will also need to turn off KMS manually using the following steps.
 
 1. Press `e` when you see the bootloader after turning on your computer.
