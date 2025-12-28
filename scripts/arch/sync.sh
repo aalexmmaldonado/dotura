@@ -17,17 +17,18 @@ PKG_DIR="$SCRIPT_DIR/../../pkg/arch"
 PACMAN_LIST="$PKG_DIR/pacman.txt"
 AUR_LIST="$PKG_DIR/aur.txt"
 EXTRA_LIST="$PKG_DIR/extra.txt"
+AUR_EXTRA_LIST="$PKG_DIR/aur-extra.txt"
 
 # Ensure required files exist
 mkdir -p "$PKG_DIR"
-touch "$PACMAN_LIST" "$AUR_LIST" "$EXTRA_LIST"
+touch "$PACMAN_LIST" "$AUR_LIST" "$EXTRA_LIST" "$AUR_EXTRA_LIST"
 
 # Get list of explicitly installed packages
 log "Getting list of explicitly installed packages..."
 mapfile -t explicit_pkgs < <(pacman -Qqe)
 
 # Get AUR/foreign packages
-log "Detecting AUR (foreign) packages..."
+log "Detecting AUR packages..."
 if command -v yay &>/dev/null; then
     mapfile -t aur_installed < <(yay -Qm)
 else
@@ -45,9 +46,10 @@ done
 readarray -t pacman_pkgs < "$PACMAN_LIST"
 readarray -t aur_pkgs < "$AUR_LIST"
 readarray -t extra_pkgs < "$EXTRA_LIST"
+readarray -t aur_extra_pkgs < "$AUR_EXTRA_LIST"
 
 # Combine all tracked packages
-tracked_set=$(printf "%s\n" "${pacman_pkgs[@]}" "${aur_pkgs[@]}" "${extra_pkgs[@]}" | sort -u)
+tracked_set=$(printf "%s\n" "${pacman_pkgs[@]}" "${aur_pkgs[@]}" "${extra_pkgs[@]}" "${aur_extra_pkgs[@]}" | sort -u)
 
 # Determine untracked packages
 log "Comparing installed packages to tracked lists..."
@@ -87,8 +89,14 @@ for pkg in "${untracked_pkgs[@]}"; do
             fi
             ;;
         n|N)
-            echo "$pkg" >> "$EXTRA_LIST"
-            log "Added '$pkg' to extra.txt"
+
+            if [[ "$source" == "aur" ]]; then
+                echo "$pkg" >> "$AUR_EXTRA_LIST"
+                log "Added '$pkg' to aur-extra.txt"
+            else
+                echo "$pkg" >> "$EXTRA_LIST"
+                log "Added '$pkg' to extra.txt"
+            fi
             ;;
         s|S)
             warn "Skipped '$pkg'"
@@ -101,6 +109,6 @@ done
 
 # Sort and deduplicate lists
 log "Sorting and deduplicating package lists..."
-for file in "$PACMAN_LIST" "$AUR_LIST" "$EXTRA_LIST"; do
+for file in "$PACMAN_LIST" "$AUR_LIST" "$EXTRA_LIST" "$AUR_EXTRA_LIST"; do
     sort -u "$file" -o "$file"
 done
