@@ -108,6 +108,25 @@ archinstall --config ~/arch-config.json
 
 Note that Disk configuration and Authentication are not included in the configuration file; make sure to do these manually.
 
+#### NVIDIA GPUs
+
+Using Arch with NVIDIA GPUs will be a little more complicated.
+You will likely need to disable [Kernel Mode Setting (KMS)](https://wiki.archlinux.org/title/Kernel_mode_setting) when creating the Live USB.
+After installation, you will also need to turn off KMS manually using the following steps.
+
+1. Press `e` when you see the bootloader after turning on your computer.
+2. Go to the very end of the line and add `nomodeset nouveau.modeset=0`.
+3. Press Enter.
+
+Once you are logged in, you need to install the following packages to support your NVIDIA GPU.
+
+```bash
+sudo pacman -Syu nvidia-open nvidia-utils
+```
+
+After installation, please restart your computer and verify it boots correctly _without_ turning off KMS.
+If it still goes to a black screen after seeing the `uevents triggering` line, then turn off KMS again and consult the [Arch wiki](https://wiki.archlinux.org/title/NVIDIA).
+
 ### MacOS
 
 Let's be real, do we really need instructions for this?
