@@ -23,51 +23,6 @@ sudo ./install.sh
 This will prompt you to select your USB drive, the ISO file, and an optional configuration file.
 We provide some sample config files for Arch and Ubuntu in the `config` directory of this repository.
 (Note that the config files are tailored to my preferences; feel free to change it.)
-Below is an example of a successfully running install script.
-
-```text
-[+] Detected OS: Darwin
-[+] Listing external physical drives (macOS)...
-/dev/disk4 (external, physical):
-   #:                       TYPE NAME                    SIZE       IDENTIFIER
-   0:     FDisk_partition_scheme                        *31.6 GB    disk4
-   1:                 DOS_FAT_32 ARCH_202512             31.6 GB    disk4s1
-
-
-Enter the DEVICE IDENTIFIER (e.g., 'disk2') to target.
-WARNING: Ensure you pick the USB drive. This device will be ERASED.
-Enter Device Node: disk4
-[+] Selected Device: /dev/disk4
-Path to ISO: ~/Downloads/archlinux-2025.12.01-x86_64.iso
-[+] Using ISO: /Users/alex/Downloads/archlinux-2025.12.01-x86_64.iso
-Optional path to config file (press Enter to skip): ./config/arch/arch-config.json
-
-[!] WARNING: YOU ARE ABOUT TO WIPE /dev/disk4
-Type 'yes' to proceed: yes
-[+] Unmounting target device...
-Unmount of all volumes on disk4 was successful
-[+] Wiping and Formatting /dev/disk4 as FAT32...
-[+] Partition Label: ARCH_202512
-Forced unmount of all volumes on disk4 was successful
-Started erase on disk4
-Unmounting disk
-Creating the partition map
-Waiting for partitions to activate
-Formatting disk4s1 as MS-DOS (FAT) with name ARCH_202512
-512 bytes per physical sector
-/dev/rdisk4s1: 61735424 sectors in 1929232 FAT32 clusters (16384 bytes/cluster)
-bps=512 spc=32 res=32 nft=2 mid=0xf8 spt=32 hds=255 hid=2048 drv=0x80 bsec=61765632 bspf=15073 rdcl=2 infs=1 bkbs=6
-Mounting disk
-Finished erase on disk4
-[+] Waiting for volume to mount...
-[+] Volume mounted at /Volumes/ARCH_202512
-[+] Extracting ISO contents to USB...
-[+] Adding config file to USB root...
-[+] Syncing buffers...
-Unmount of all volumes on disk4 was successful
-[+] Cleaning up...
-[+] Success!
-```
 
 #### Loading custom configurations
 
@@ -131,40 +86,7 @@ If it still goes to a black screen after seeing the `uevents triggering` line, t
 
 Let's be real, do we really need instructions for this?
 
-## Before Cloning
-
-It will probably be helpful to perform these tasks before trying to clone these repositories.
-We assume you already have `git` installed so we can configure it.
-
-```sh
-git config --global user.name "Alex M. Maldonado"
-git config --global user.email "alex@scient.ing"
-```
-
-```sh
-ssh-keygen -f ~/.ssh/id_github -t ed25519 -C "alex@scient.ing"
-```
-
-After this, [add the public key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account?tool=webui&platform=linux#adding-a-new-ssh-key-to-your-account).
-
-```sh
-cat ~/.ssh/id_github.pub
-```
-
-Go to [Settings -> SSH and GPG keys](https://github.com/settings/keys) and add a new SSH key.
-
-To check SSH access to GitHub, you can run this command.
-
-```sh
-ssh -T git@github.com -i ~/.ssh/id_github
-```
-
 ## dotura usage
 
-Once you have SSH access to GitHub, you can now clone [this repository](https://github.com/aalexmmaldonado/dotura) and begin installation.
-
-```sh
-GIT_SSH_COMMAND="ssh -i ~/.ssh/id_github" git clone git@github.com:aalexmmaldonado/dotura.git && cd dotura
-```
-
-You can just run the `install.sh` script from here!
+Clone [this repository](https://github.com/aalexmmaldonado/dotura) and begin installation.
+You can just run the `setup.sh` script from here!
